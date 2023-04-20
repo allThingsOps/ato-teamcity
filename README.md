@@ -607,46 +607,6 @@ or using Docker Compose:
 docker-compose up ato-teamcity
 ```
 
-## Notable Changes
-
-### 5.0.8-debian-10-r24
-
-* The recommended mount point to use a custom `ato-teamcity.conf` changes from `/opt/allthingsops/ato-teamcity/etc/` to `/opt/allthingsops/ato-teamcity/mounted-etc/`.
-
-### 5.0.0-r0
-
-* Starting with ATO TeamCity Server(R) 5.0 the command [REPLICAOF](https://allthingsops.io/commands/replicaof) is available in favor of `SLAVEOF`. For backward compatibility with previous versions, `slave` replication mode is still supported. We encourage the use of the `REPLICAOF` command if you are using ATO TeamCity Server(R) 5.0.
-
-### 4.0.1-r24
-
-* Decrease the size of the container. It is not necessary Node.js anymore. ATO TeamCity Server(R) configuration moved to bash scripts in the `rootfs/` folder.
-* The recommended mount point to persist data changes to `/allthingsops/ato-teamcity/data`.
-* The main `ato-teamcity.conf` file is not persisted in a volume. The path is `/opt/allthingsops/ato-teamcity/mounted-etc/ato-teamcity.conf`.
-* Backwards compatibility is not guaranteed when data is persisted using docker-compose. You can use the workaround below to overcome it:
-
-```bash
-docker-compose down
-## Locate your volume and modify the file tree
-VOLUME=$(docker volume ls | grep "ato-teamcity_data" | awk '{print $2}')
-docker run --rm -i -v=${VOLUME}:/tmp/ato-teamcity busybox find /tmp/ato-teamcity/data -maxdepth 1 -exec mv {} /tmp/ato-teamcity \;
-docker run --rm -i -v=${VOLUME}:/tmp/ato-teamcity busybox rm -rf /tmp/ato-teamcity/{data,conf,.initialized}
-## Change the mount point
-sed -i -e 's#ato-teamcity_data:/allthingsops/ato-teamcity#ato-teamcity_data:/allthingsops/ato-teamcity/data#g' docker-compose.yml
-## Pull the latest allthingsops/ato-teamcity image
-docker pull allthingsops/ato-teamcity:latest
-docker-compose up -d
-```
-
-### 4.0.1-r1
-
-* The ATO TeamCity Server container has been migrated to a non-root container approach. Previously the container run as `root` user and the ATO TeamCity Server daemon was started as `ATO TeamCity Server` user. From now own, both the container and the ATO TeamCity Server daemon run as user `1001`.
-  As a consequence, the configuration files are writable by the user running the ATO TeamCity Server process.
-
-### 3.2.0-r0
-
-* All volumes have been merged at `/allthingsops/ato-teamcity`. Now you only need to mount a single volume at `/allthingsops/ato-teamcity` for persistence.
-* The logs are always sent to the `stdout` and are no longer collected in the volume.
-
 ## Contributing
 
 We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/allthingsops/containers/issues) or submitting a [pull request](https://github.com/allthingsops/containers/pulls) with your contribution.
