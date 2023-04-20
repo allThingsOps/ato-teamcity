@@ -1,11 +1,11 @@
-# allThingsOps package for TeamCity Server&reg;
+# allThingsOps package for ATO TeamCity Server&reg;
 
-## What is TeamCity Server&reg;?
+## What is ATO TeamCity Server&reg;?
 
-> TeamCity Server&reg; is an open source, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.
+> ATO TeamCity Server&reg; is an open source, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.
 
-[Overview of TeamCity Server&reg;](https://allthingsops.io)
-Disclaimer: TeamCity Server is a registered trademark of TeamCity Server Ltd. Any rights therein are reserved to TeamCity Server Ltd. Any use by allthingsops is for referential purposes only and does not indicate any sponsorship, endorsement, or affiliation between TeamCity Server Ltd.
+[Overview of ATO TeamCity Server&reg;](https://allThingsOps.io)
+Disclaimer: ATO TeamCity Server is a registered trademark of ATO TeamCity Server Ltd. Any rights therein are reserved to ATO TeamCity Server Ltd. Any use by allThingsOps is for referential purposes only and does not indicate any sponsorship, endorsement, or affiliation between ATO TeamCity Server Ltd.
 
 ## TL;DR
 
@@ -16,34 +16,34 @@ docker run -dit --name ato-teamcity -p 8111:8111 allthingsops/ato-teamcity:lates
 ### Docker Compose
 
 ```console
-curl -sSL https://raw.githubusercontent.com/allthingsops/containers/main/ato/teamcity Server/docker-compose.yml > docker-compose.yml
+curl -sSL https://raw.githubusercontent.com/allthingsops/containers/main/ato/ato-teamcity/docker-compose.yml > docker-compose.yml
 docker-compose up -d
 ```
 
 **Warning**: These quick setups are only intended for development environments. You are encouraged to change the insecure default credentials and check out the available configuration options in the [Configuration](#configuration) section for a more secure deployment.
 
-## Why use allthingsops Images?
+## Why use allThingsOps Images?
 
-* allthingsops closely tracks upstream source changes and promptly publishes new versions of this image using our automated systems.
-* With allthingsops images the latest bug fixes and features are available as soon as possible.
-* allthingsops containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
+* allThingsOps closely tracks upstream source changes and promptly publishes new versions of this image using our automated systems.
+* With allThingsOps images the latest bug fixes and features are available as soon as possible.
+* allThingsOps containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
 * All our images are based on [minideb](https://github.com/allthingsops/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
-* All allthingsops images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
-* allthingsops container images are released on a regular basis with the latest distribution packages available.
+* All allThingsOps images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
+* allThingsOps container images are released on a regular basis with the latest distribution packages available.
 
 ## How to deploy ATO TeamCity Server(R) in Kubernetes?
 
-Deploying allthingsops applications as Helm Charts is the easiest way to get started with our applications on Kubernetes. Read more about the installation in the [allthingsops ATO TeamCity Server(R) Chart GitHub repository](https://github.com/allthingsops/charts/tree/master/allthingsops/TeamCity Server).
+Deploying allThingsOps applications as Helm Charts is the easiest way to get started with our applications on Kubernetes. Read more about the installation in the [allThingsOps ATO TeamCity Server(R) Chart GitHub repository](https://github.com/allthingsops/charts/tree/master/allthingsops/ato-teamcity).
 
-allthingsops containers can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
+allThingsOps containers can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
 ## Why use a non-root container?
 
-Non-root container images add an extra layer of security and are generally recommended for production environments. However, because they run as a non-root user, privileged tasks are typically off-limits. Learn more about non-root containers [in our docs](https://docs.allthingsops.com/tutorials/work-with-non-root-containers/).
+Non-root container images add an extra layer of security and are generally recommended for production environments. However, because they run as a non-root user, privileged tasks are typically off-limits. Learn more about non-root containers [in our docs](https://docs.allThingsOps.com/tutorials/work-with-non-root-containers/).
 
 ## Supported tags and respective `Dockerfile` links
 
-Learn more about the allthingsops tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.allthingsops.com/tutorials/understand-rolling-tags-containers/).
+Learn more about the allThingsOps tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.allThingsOps.com/tutorials/understand-rolling-tags-containers/).
 
 You can see the equivalence between the different tags by taking a look at the `tags-info.yaml` file present in the branch folder, i.e `allthingsops/ASSET/BRANCH/DISTRO/tags-info.yaml`.
 
@@ -51,13 +51,13 @@ Subscribe to project updates by watching the [allthingsops/containers GitHub rep
 
 ## Get this image
 
-The recommended way to get the allthingsops ATO TeamCity Server(R) Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/allthingsops/TeamCity Server).
+The recommended way to get the allThingsOps ATO TeamCity Server(R) Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/allthingsops/ato-teamcity).
 
 ```console
 docker pull allthingsops/ato-teamcity:latest
 ```
 
-To use a specific version, you can pull a versioned tag. You can view the [list of available versions](https://hub.docker.com/r/allthingsops/TeamCity Server/tags/) in the Docker Hub Registry.
+To use a specific version, you can pull a versioned tag. You can view the [list of available versions](https://hub.docker.com/r/allthingsops/ato-teamcity/tags/) in the Docker Hub Registry.
 
 ```console
 docker pull allthingsops/ato-teamcity:[TAG]
@@ -73,11 +73,11 @@ docker build -t allthingsops/APP:latest .
 
 ## Persisting your database
 
-ATO TeamCity Server(R) provides a different range of [persistence options](https://TeamCity Server.io/topics/persistence). This contanier uses *AOF persistence by default* but it is easy to overwrite that configuration in a `docker-compose.yaml` file with this entry `command: /opt/allthingsops/scripts/TeamCity Server/run.sh --appendonly no`. Alternatively, you may use the `ato-teamcity_AOF_ENABLED` env variable as explained in [Disabling AOF persistence](https://github.com/allthingsops/containers/blob/main/allthingsops/TeamCity Server#disabling-aof-persistence).
+ATO TeamCity Server(R) provides a different range of [persistence options](https://allthingsops.io/topics/persistence). This contanier uses *AOF persistence by default* but it is easy to overwrite that configuration in a `docker-compose.yaml` file with this entry `command: /opt/allthingsops/scripts/ato-teamcity/run.sh --appendonly no`. Alternatively, you may use the `ato-teamcity_AOF_ENABLED` env variable as explained in [Disabling AOF persistence](https://github.com/allthingsops/containers/blob/main/allthingsops/ato-teamcity#disabling-aof-persistence).
 
 If you remove the container all your data will be lost, and the next time you run the image the database will be reinitialized. To avoid this loss of data, you should mount a volume that will persist even after the container is removed.
 
-For persistence you should mount a directory at the `/allthingsops` path. If the mounted directory is empty, it will be initialized on the first run.
+For persistence you should mount a directory at the `/allThingsOps` path. If the mounted directory is empty, it will be initialized on the first run.
 
 ```console
 docker run \
@@ -90,7 +90,7 @@ You can also do this by modifying the [`docker-compose.yml`](https://github.com/
 
 ```yaml
 services:
-  ATO ATO TeamCity Server:
+  ATO TeamCity Server:
   ...
     volumes:
       - /path/to/ato-teamcity-persistence:/allthingsops/ato-teamcity/data
@@ -123,7 +123,7 @@ Use the `--network app-tier` argument to the `docker run` command to attach the 
 docker run -d --name ato-teamcity-server \
     -p 8111:8111 \
     --network app-tier \
-    allthingsops/ATO TeamCity Server:latest
+    allthingsops/ato-teamcity:latest
 ```
 
 #### Step 3: Launch your ATO TeamCity Server(R) client instance
@@ -149,7 +149,7 @@ networks:
 
 services:
   ATO TeamCity Server:
-    image: 'allthingsops/ATO TeamCity Server:latest'
+    image: 'allthingsops/ato-teamcity:latest'
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
     networks:
@@ -163,7 +163,7 @@ services:
 > **IMPORTANT**:
 >
 > 1. Please update the **YOUR_APPLICATION_IMAGE_** placeholder in the above snippet with your application image
-> 2. In your application container, use the hostname `TeamCity Server` to connect to the ATO TeamCity Server(R) server
+> 2. In your application container, use the hostname `ATO TeamCity Server` to connect to the ATO TeamCity Server(R) server
 
 Launch the containers using:
 
@@ -206,12 +206,12 @@ services:
   ...
 ```
 
-### Passing extra command-line flags to TeamCity Server-server startup
+### Passing extra command-line flags to ato-teamcity-server startup
 
-Passing extra command-line flags to the TeamCity Server service command is possible by adding them as arguments to *run.sh* script:
+Passing extra command-line flags to the ATO TeamCity Server service command is possible by adding them as arguments to *run.sh* script:
 
 ```console
-docker run --name ato-teamcity -p 8111:8111 allthingsops/ATO TeamCity Server:latest /opt/allthingsops/scripts/ato-teamcity/run.sh --maxmemory 100mb
+docker run --name ato-teamcity -p 8111:8111 allthingsops/ato-teamcity:latest /opt/allthingsops/scripts/ato-teamcity/run.sh --maxmemory 100mb
 ```
 
 Alternatively, modify the [`docker-compose.yml`](https://github.com/allthingsops/containers/blob/main/allthingsops/ato-teamcity/docker-compose.yml) file present in this repository:
@@ -226,7 +226,7 @@ services:
   ...
 ```
 
-Refer to the [ATO TeamCity Server(R) documentation](https://allthingsops.io/topics/config#passing-arguments-via-the-command-line) for the complete list of arguments.
+Refer to the [ATO TeamCity Server(R) documentation](https://allThingsOps.io/topics/config#passing-arguments-via-the-command-line) for the complete list of arguments.
 
 ### Setting the server password on first run
 
@@ -256,10 +256,10 @@ services:
 By default the ATO TeamCity Server(R) image expects all the available passwords to be set. In order to allow empty passwords, it is necessary to set the `ALLOW_EMPTY_PASSWORD=yes` env variable. This env variable is only recommended for testing or development purposes. We strongly recommend specifying the `ato-teamcity_PASSWORD` for any other scenario.
 
 ```console
-docker run --name ato-teamcity -p 8111:8111 allthingsops/ATO TeamCity Server:latest
+docker run --name ato-teamcity -p 8111:8111 allthingsops/ato-teamcity:latest
 ```
 
-Alternatively, modify the [`docker-compose.yml`](https://github.com/allthingsops/containers/blob/main/allthingsops/TeamCity Server/docker-compose.yml) file present in this repository:
+Alternatively, modify the [`docker-compose.yml`](https://github.com/allthingsops/containers/blob/main/allthingsops/ato-teamcity/docker-compose.yml) file present in this repository:
 
 ```yaml
 services:
@@ -272,21 +272,21 @@ services:
 
 ### Enabling/Setting multithreading
 
-TeamCity Server 6.0 features a [new multi-threading model](https://segmentfault.com/a/1190000040376111/en). You can set both `io-threads` and `io-threads-do-reads` though the env vars `ato-teamcity_IO_THREADS` and `ato-teamcity_IO_THREADS_DO_READS`
+ATO TeamCity Server 6.0 features a [new multi-threading model](https://segmentfault.com/a/1190000040376111/en). You can set both `io-threads` and `io-threads-do-reads` though the env vars `ato-teamcity_IO_THREADS` and `ato-teamcity_IO_THREADS_DO_READS`
 
 ```console
-docker run --name ato-teamcity -e ato-teamcity_IO_THREADS=4 -e ato-teamcity_IO_THREADS_DO_READS=true allthingsops/ATO TeamCity Server:latest
+docker run --name ato-teamcity -e ato-teamcity_IO_THREADS=4 -e ato-teamcity_IO_THREADS_DO_READS=true allthingsops/ato-teamcity:latest
 ```
 
 ### Disabling AOF persistence
 
-ATO TeamCity Server(R) offers different [options](https://TeamCity Server.io/topics/persistence) when it comes to persistence. By default, this image is set up to use the AOF (Append Only File) approach. Should you need to change this behaviour, setting the `ato-teamcity_AOF_ENABLED=no` env variable will disable this feature.
+ATO TeamCity Server(R) offers different [options](https://allthingsops.io/topics/persistence) when it comes to persistence. By default, this image is set up to use the AOF (Append Only File) approach. Should you need to change this behaviour, setting the `ato-teamcity_AOF_ENABLED=no` env variable will disable this feature.
 
 ```console
-docker run --name ato-teamcity -e ato-teamcity_AOF_ENABLED=no allthingsops/ATO TeamCity Server:latest
+docker run --name ato-teamcity -e ato-teamcity_AOF_ENABLED=no allthingsops/ato-teamcity:latest
 ```
 
-Alternatively, modify the [`docker-compose.yml`](https://github.com/allthingsops/containers/blob/main/allthingsops/TeamCity Server/docker-compose.yml) file present in this repository:
+Alternatively, modify the [`docker-compose.yml`](https://github.com/allthingsops/containers/blob/main/allthingsops/ato-teamcity/docker-compose.yml) file present in this repository:
 
 ```yaml
 services:
@@ -299,22 +299,22 @@ services:
 
 ### Enabling Access Control List
 
-ATO TeamCity Server(R) offers [ACL](https://TeamCity Server.io/topics/acl) since 6.0 which allows certain connections to be limited in terms of the commands that can be executed and the keys that can be accessed. We strongly recommend enabling ACL in production by specifiying the `ato-teamcity_ACLFILE`.
+ATO TeamCity Server(R) offers [ACL](https://allthingsops.io/topics/acl) since 6.0 which allows certain connections to be limited in terms of the commands that can be executed and the keys that can be accessed. We strongly recommend enabling ACL in production by specifiying the `ato-teamcity_ACLFILE`.
 
 ```console
-docker run -name ato-teamcity -e ato-teamcity_ACLFILE=/opt/allthingsops/TeamCity Server/mounted-etc/users.acl -v /path/to/users.acl:/opt/allthingsops/TeamCity Server/mounted-etc/users.acl allthingsops/ATO TeamCity Server:latest
+docker run -name ato-teamcity -e ato-teamcity_ACLFILE=/opt/allthingsops/ato-teamcity/mounted-etc/users.acl -v /path/to/users.acl:/opt/allthingsops/ato-teamcity/mounted-etc/users.acl allthingsops/ato-teamcity:latest
 ```
 
-Alternatively, modify the [`docker-compose.yml`](https://github.com/allthingsops/containers/blob/main/allthingsops/TeamCity Server/docker-compose.yml) file present in this repository:
+Alternatively, modify the [`docker-compose.yml`](https://github.com/allthingsops/containers/blob/main/allthingsops/ato-teamcity/docker-compose.yml) file present in this repository:
 
 ```yaml
 services:
   ATO TeamCity Server:
   ...
     environment:
-      - ato-teamcity_ACLFILE=/opt/allthingsops/TeamCity Server/mounted-etc/users.acl
+      - ato-teamcity_ACLFILE=/opt/allthingsops/ato-teamcity/mounted-etc/users.acl
     volumes:
-      - /path/to/users.acl:/opt/allthingsops/TeamCity Server/mounted-etc/users.acl
+      - /path/to/users.acl:/opt/allthingsops/ato-teamcity/mounted-etc/users.acl
   ...
 ```
 
@@ -323,26 +323,26 @@ services:
 By default, this image is set up to launch ATO TeamCity Server(R) in standalone mode on port 6379. Should you need to change this behavior, setting the `ato-teamcity_PORT_NUMBER` environment variable will modify the port number. This is not to be confused with `ato-teamcity_MASTER_PORT_NUMBER` or `ato-teamcity_REPLICA_PORT` environment variables that are applicable in replication mode.
 
 ```console
-docker run --name ato-teamcity -e ato-teamcity_PORT_NUMBER=7000 -p 7000:7000 allthingsops/ATO TeamCity Server:latest
+docker run --name ato-teamcity -e ato-teamcity_PORT_NUMBER=8111 -p 8111:8111 allthingsops/ato-teamcity:latest
 ```
 
-Alternatively, modify the [`docker-compose.yml`](https://github.com/allthingsops/containers/blob/main/allthingsops/TeamCity Server/docker-compose.yml) file present in this repository:
+Alternatively, modify the [`docker-compose.yml`](https://github.com/allthingsops/containers/blob/main/allthingsops/ato-teamcity/docker-compose.yml) file present in this repository:
 
 ```yaml
 services:
   ATO TeamCity Server:
   ...
     environment:
-      - ato-teamcity_PORT_NUMBER=7000
+      - ato-teamcity_PORT_NUMBER=8111
     ...
     ports:
-      - '7000:7000'
+      - '8111:8111'
   ....
 ```
 
 ### Setting up replication
 
-A [replication](http://TeamCity Server.io/topics/replication) cluster can easily be setup with the allthingsops ATO TeamCity Server(R) Docker Image using the following environment variables:
+A [replication](https://allthingsops.io/topics/replication) cluster can easily be setup with the allThingsOps ATO TeamCity Server(R) Docker Image using the following environment variables:
 
 * `ato-teamcity_REPLICATION_MODE`: The replication mode. Possible values `master`/`slave`. No defaults.
 * `ato-teamcity_REPLICA_IP`: The replication announce ip. Defaults to `$(get_machine_ip)` which return the ip of the container.
@@ -361,7 +361,7 @@ The first step is to start the ATO TeamCity Server(R) master.
 docker run --name ato-teamcity-master \
   -e ato-teamcity_REPLICATION_MODE=master \
   -e ato-teamcity_PASSWORD=masterpassword123 \
-  allthingsops/ATO TeamCity Server:latest
+  allthingsops/ato-teamcity:latest
 ```
 
 In the above command the container is configured as the `master` using the `ato-teamcity_REPLICATION_MODE` parameter. The `ato-teamcity_PASSWORD` parameter enables authentication on the ATO TeamCity Server(R) master.
@@ -372,13 +372,13 @@ Next we start a ATO TeamCity Server(R) replica container.
 
 ```console
 docker run --name ato-teamcity-replica \
-  --link TeamCity Server-master:master \
+  --link ato-teamcity-master:master \
   -e ato-teamcity_REPLICATION_MODE=slave \
   -e ato-teamcity_MASTER_HOST=master \
   -e ato-teamcity_MASTER_PORT_NUMBER=6379 \
   -e ato-teamcity_MASTER_PASSWORD=masterpassword123 \
   -e ato-teamcity_PASSWORD=password123 \
-  allthingsops/ATO TeamCity Server:latest
+  allthingsops/ato-teamcity:latest
 ```
 
 In the above command the container is configured as a `slave` using the `ato-teamcity_REPLICATION_MODE` parameter. The `ato-teamcity_MASTER_HOST`, `ato-teamcity_MASTER_PORT_NUMBER` and `ato-teamcity_MASTER_PASSWORD` parameters are used connect and authenticate with the ATO TeamCity Server(R) master. The `ato-teamcity_PASSWORD` parameter enables authentication on the ATO TeamCity Server(R) replica.
@@ -388,10 +388,10 @@ You now have a two node ATO TeamCity Server(R) master/replica replication cluste
 If the ATO TeamCity Server(R) master goes down you can reconfigure a replica to become a master using:
 
 ```console
-docker exec TeamCity Server-replica TeamCity Server-cli -a password123 SLAVEOF NO ONE
+docker exec ato-teamcity-replica ato-teamcity-cli -a password123 SLAVEOF NO ONE
 ```
 
-> **Note**: The configuration of the other replicas in the cluster needs to be updated so that they are aware of the new master. In our example, this would involve restarting the other replicas with `--link TeamCity Server-replica:master`.
+> **Note**: The configuration of the other replicas in the cluster needs to be updated so that they are aware of the new master. In our example, this would involve restarting the other replicas with `--link ato-teamcity-replica:master`.
 
 With Docker Compose the master/replica mode can be setup using:
 
@@ -399,25 +399,25 @@ With Docker Compose the master/replica mode can be setup using:
 version: '2'
 
 services:
-  TeamCity Server-master:
-    image: 'allthingsops/ATO TeamCity Server:latest'
+  ato-teamcity-master:
+    image: 'allthingsops/ato-teamcity:latest'
     ports:
       - '6379'
     environment:
       - ato-teamcity_REPLICATION_MODE=master
       - ato-teamcity_PASSWORD=my_master_password
     volumes:
-      - '/path/to/TeamCity Server-persistence:/allthingsops'
+      - '/path/to/ato-teamcity-persistence:/allThingsOps'
 
-  TeamCity Server-replica:
-    image: 'allthingsops/ATO TeamCity Server:latest'
+  ato-teamcity-replica:
+    image: 'allthingsops/ato-teamcity:latest'
     ports:
       - '6379'
     depends_on:
-      - TeamCity Server-master
+      - ato-teamcity-master
     environment:
       - ato-teamcity_REPLICATION_MODE=slave
-      - ato-teamcity_MASTER_HOST=TeamCity Server-master
+      - ato-teamcity_MASTER_HOST=ato-teamcity-master
       - ato-teamcity_MASTER_PORT_NUMBER=6379
       - ato-teamcity_MASTER_PASSWORD=my_master_password
       - ato-teamcity_PASSWORD=my_replica_password
@@ -426,7 +426,7 @@ services:
 Scale the number of replicas using:
 
 ```console
-docker-compose up --detach --scale TeamCity Server-master=1 --scale TeamCity Server-secondary=3
+docker-compose up --detach --scale ato-teamcity-master=1 --scale ato-teamcity-secondary=3
 ```
 
 The above command scales up the number of replicas to `3`. You can scale down in the same way.
@@ -451,14 +451,14 @@ When enabling TLS, conventional standard traffic is disabled by default. However
 
     ```console
     $ docker run --name ato-teamcity \
-        -v /path/to/certs:/opt/allthingsops/TeamCity Server/certs \
-        -v /path/to/TeamCity Server-data-persistence:/allthingsops/TeamCity Server/data \
+        -v /path/to/certs:/opt/allthingsops/ato-teamcity/certs \
+        -v /path/to/ato-teamcity-data-persistence:/allthingsops/ato-teamcity/data \
         -p 8111:8111 \
         -e ato-teamcity_TLS_ENABLED=yes \
-        -e ato-teamcity_TLS_CERT_FILE=/opt/allthingsops/TeamCity Server/certs/TeamCity Server.crt \
-        -e ato-teamcity_TLS_KEY_FILE=/opt/allthingsops/TeamCity Server/certs/TeamCity Server.key \
-        -e ato-teamcity_TLS_CA_FILE=/opt/allthingsops/TeamCity Server/certs/TeamCity ServerCA.crt \
-        allthingsops/ATO TeamCity Server:latest
+        -e ato-teamcity_TLS_CERT_FILE=/opt/allthingsops/ato-teamcity/certs/ato-teamcity.crt \
+        -e ato-teamcity_TLS_KEY_FILE=/opt/allthingsops/ato-teamcity/certs/ato-teamcity.key \
+        -e ato-teamcity_TLS_CA_FILE=/opt/allthingsops/ato-teamcity/certs/ato-teamcity_ca.crt \
+        allthingsops/ato-teamcity:latest
     ```
 
 2. Modifying the `docker-compose.yml` file present in this repository:
@@ -470,78 +470,78 @@ When enabling TLS, conventional standard traffic is disabled by default. However
         environment:
           ...
           - ato-teamcity_TLS_ENABLED=yes
-          - ato-teamcity_TLS_CERT_FILE=/opt/allthingsops/TeamCity Server/certs/TeamCity Server.crt
-          - ato-teamcity_TLS_KEY_FILE=/opt/allthingsops/TeamCity Server/certs/TeamCity Server.key
-          - ato-teamcity_TLS_CA_FILE=/opt/allthingsops/TeamCity Server/certs/TeamCity ServerCA.crt
+          - ato-teamcity_TLS_CERT_FILE=/opt/allthingsops/ato-teamcity/certs/ato-teamcity.crt
+          - ato-teamcity_TLS_KEY_FILE=/opt/allthingsops/ato-teamcity/certs/ato-teamcity.key
+          - ato-teamcity_TLS_CA_FILE=/opt/allthingsops/ato-teamcity/certs/ato-teamcity_ca.crt
         ...
         volumes:
-          - /path/to/certs:/opt/allthingsops/TeamCity Server/certs
-          - /path/to/TeamCity Server-persistence:/allthingsops/TeamCity Server/data
+          - /path/to/certs:/opt/allthingsops/ato-teamcity/certs
+          - /path/to/ato-teamcity-persistence:/allthingsops/ato-teamcity/data
       ...
     ```
 
-Alternatively, you may also provide with this configuration in your [custom](https://github.com/allthingsops/containers/blob/main/allthingsops/TeamCity Server#configuration-file) configuration file.
+Alternatively, you may also provide with this configuration in your [custom](https://github.com/allthingsops/containers/blob/main/allthingsops/ato-teamcity#configuration-file) configuration file.
 
 ### Configuration file
 
-The image looks for configurations in `/opt/allthingsops/TeamCity Server/mounted-etc/TeamCity Server.conf`. You can overwrite the `TeamCity Server.conf` file using your own custom configuration file.
+The image looks for configurations in `/opt/allthingsops/ato-teamcity/mounted-etc/ato-teamcity.conf`. You can overwrite the `ato-teamcity.conf` file using your own custom configuration file.
 
 ```console
 docker run --name ato-teamcity \
     -p 8111:8111 \
-    -v /path/to/your_TeamCity Server.conf:/opt/allthingsops/TeamCity Server/mounted-etc/TeamCity Server.conf \
-    -v /path/to/TeamCity Server-data-persistence:/allthingsops/TeamCity Server/data \
-    allthingsops/ATO TeamCity Server:latest
+    -v /path/to/your_ato-teamcity.conf:/opt/allthingsops/ato-teamcity/mounted-etc/ato-teamcity.conf \
+    -v /path/to/ato-teamcity-data-persistence:/allthingsops/ato-teamcity/data \
+    allthingsops/ato-teamcity:latest
 ```
 
-Alternatively, modify the [`docker-compose.yml`](https://github.com/allthingsops/containers/blob/main/allthingsops/TeamCity Server/docker-compose.yml) file present in this repository:
+Alternatively, modify the [`docker-compose.yml`](https://github.com/allthingsops/containers/blob/main/allthingsops/ato-teamcity/docker-compose.yml) file present in this repository:
 
 ```yaml
 services:
   ATO TeamCity Server:
   ...
     volumes:
-      - /path/to/your_TeamCity Server.conf:/opt/allthingsops/TeamCity Server/mounted-etc/TeamCity Server.conf
-      - /path/to/TeamCity Server-persistence:/allthingsops/TeamCity Server/data
+      - /path/to/your_ato-teamcity.conf:/opt/allthingsops/ato-teamcity/mounted-etc/ato-teamcity.conf
+      - /path/to/ato-teamcity-persistence:/allthingsops/ato-teamcity/data
   ...
 ```
 
-Refer to the [ATO TeamCity Server(R) configuration](http://TeamCity Server.io/topics/config) manual for the complete list of configuration options.
+Refer to the [ATO TeamCity Server(R) configuration](https://allthingsops.io/topics/config) manual for the complete list of configuration options.
 
 ### Overriding configuration
 
-Instead of providing a custom `TeamCity Server.conf`, you may also choose to provide only settings you wish to override. The image will look for `/opt/allthingsops/TeamCity Server/mounted-etc/overrides.conf`. This will be ignored if custom `TeamCity Server.conf` is provided.
+Instead of providing a custom `ato-teamcity.conf`, you may also choose to provide only settings you wish to override. The image will look for `/opt/allthingsops/ato-teamcity/mounted-etc/overrides.conf`. This will be ignored if custom `ato-teamcity.conf` is provided.
 
 ```console
 docker run --name ato-teamcity \
     -p 8111:8111 \
-    -v /path/to/overrides.conf:/opt/allthingsops/TeamCity Server/mounted-etc/overrides.conf \
-    allthingsops/ATO TeamCity Server:latest
+    -v /path/to/overrides.conf:/opt/allthingsops/ato-teamcity/mounted-etc/overrides.conf \
+    allthingsops/ato-teamcity:latest
 ```
 
-Alternatively, modify the [`docker-compose.yml`](https://github.com/allthingsops/containers/blob/main/allthingsops/TeamCity Server/docker-compose.yml) file present in this repository:
+Alternatively, modify the [`docker-compose.yml`](https://github.com/allthingsops/containers/blob/main/allthingsops/ato-teamcity/docker-compose.yml) file present in this repository:
 
 ```yaml
 services:
   ATO TeamCity Server:
   ...
     volumes:
-      - /path/to/overrides.conf:/opt/allthingsops/TeamCity Server/mounted-etc/overrides.conf
+      - /path/to/overrides.conf:/opt/allthingsops/ato-teamcity/mounted-etc/overrides.conf
   ...
 ```
 
 ## Logging
 
-The allthingsops ATO TeamCity Server(R) Docker image sends the container logs to the `stdout`. To view the logs:
+The allThingsOps ATO TeamCity Server(R) Docker image sends the container logs to the `stdout`. To view the logs:
 
 ```console
-docker logs TeamCity Server
+docker logs ato-teamcity
 ```
 
 or using Docker Compose:
 
 ```console
-docker-compose logs TeamCity Server
+docker-compose logs ato-teamcity
 ```
 
 You can configure the containers [logging driver](https://docs.docker.com/engine/admin/logging/overview/) using the `--log-driver` option if you wish to consume the container logs differently. In the default configuration docker uses the `json-file` driver.
@@ -550,47 +550,47 @@ You can configure the containers [logging driver](https://docs.docker.com/engine
 
 ### Upgrade this image
 
-allthingsops provides up-to-date versions of ATO TeamCity Server(R), including security patches, soon after they are made upstream. We recommend that you follow these steps to upgrade your container.
+allThingsOps provides up-to-date versions of ATO TeamCity Server(R), including security patches, soon after they are made upstream. We recommend that you follow these steps to upgrade your container.
 
 #### Step 1: Get the updated image
 
 ```console
-docker pull allthingsops/ATO TeamCity Server:latest
+docker pull allthingsops/ato-teamcity:latest
 ```
 
 or if you're using Docker Compose, update the value of the image property to
-`allthingsops/ATO TeamCity Server:latest`.
+`allthingsops/ato-teamcity:latest`.
 
 #### Step 2: Stop and backup the currently running container
 
 Stop the currently running container using the command
 
 ```console
-docker stop TeamCity Server
+docker stop ato-teamcity
 ```
 
 or using Docker Compose:
 
 ```console
-docker-compose stop TeamCity Server
+docker-compose stop ato-teamcity
 ```
 
-Next, take a snapshot of the persistent volume `/path/to/TeamCity Server-persistence` using:
+Next, take a snapshot of the persistent volume `/path/to/ato-teamcity-persistence` using:
 
 ```console
-rsync -a /path/to/TeamCity Server-persistence /path/to/TeamCity Server-persistence.bkp.$(date +%Y%m%d-%H.%M.%S)
+rsync -a /path/to/ato-teamcity-persistence /path/to/ato-teamcity-persistence.bkp.$(date +%Y%m%d-%H.%M.%S)
 ```
 
 #### Step 3: Remove the currently running container
 
 ```console
-docker rm -v TeamCity Server
+docker rm -v ato-teamcity
 ```
 
 or using Docker Compose:
 
 ```console
-docker-compose rm -v TeamCity Server
+docker-compose rm -v ato-teamcity
 ```
 
 #### Step 4: Run the new image
@@ -598,53 +598,53 @@ docker-compose rm -v TeamCity Server
 Re-create your container from the new image.
 
 ```console
-docker run --name ato-teamcity allthingsops/ATO TeamCity Server:latest
+docker run --name ato-teamcity allthingsops/ato-teamcity:latest
 ```
 
 or using Docker Compose:
 
 ```console
-docker-compose up TeamCity Server
+docker-compose up ato-teamcity
 ```
 
 ## Notable Changes
 
 ### 5.0.8-debian-10-r24
 
-* The recommended mount point to use a custom `TeamCity Server.conf` changes from `/opt/allthingsops/TeamCity Server/etc/` to `/opt/allthingsops/TeamCity Server/mounted-etc/`.
+* The recommended mount point to use a custom `ato-teamcity.conf` changes from `/opt/allthingsops/ato-teamcity/etc/` to `/opt/allthingsops/ato-teamcity/mounted-etc/`.
 
 ### 5.0.0-r0
 
-* Starting with ATO TeamCity Server(R) 5.0 the command [REPLICAOF](https://TeamCity Server.io/commands/replicaof) is available in favor of `SLAVEOF`. For backward compatibility with previous versions, `slave` replication mode is still supported. We encourage the use of the `REPLICAOF` command if you are using ATO TeamCity Server(R) 5.0.
+* Starting with ATO TeamCity Server(R) 5.0 the command [REPLICAOF](https://allthingsops.io/commands/replicaof) is available in favor of `SLAVEOF`. For backward compatibility with previous versions, `slave` replication mode is still supported. We encourage the use of the `REPLICAOF` command if you are using ATO TeamCity Server(R) 5.0.
 
 ### 4.0.1-r24
 
 * Decrease the size of the container. It is not necessary Node.js anymore. ATO TeamCity Server(R) configuration moved to bash scripts in the `rootfs/` folder.
-* The recommended mount point to persist data changes to `/allthingsops/TeamCity Server/data`.
-* The main `TeamCity Server.conf` file is not persisted in a volume. The path is `/opt/allthingsops/TeamCity Server/mounted-etc/TeamCity Server.conf`.
+* The recommended mount point to persist data changes to `/allthingsops/ato-teamcity/data`.
+* The main `ato-teamcity.conf` file is not persisted in a volume. The path is `/opt/allthingsops/ato-teamcity/mounted-etc/ato-teamcity.conf`.
 * Backwards compatibility is not guaranteed when data is persisted using docker-compose. You can use the workaround below to overcome it:
 
 ```bash
 docker-compose down
 ## Locate your volume and modify the file tree
 VOLUME=$(docker volume ls | grep "ato-teamcity_data" | awk '{print $2}')
-docker run --rm -i -v=${VOLUME}:/tmp/TeamCity Server busybox find /tmp/TeamCity Server/data -maxdepth 1 -exec mv {} /tmp/TeamCity Server \;
-docker run --rm -i -v=${VOLUME}:/tmp/TeamCity Server busybox rm -rf /tmp/TeamCity Server/{data,conf,.initialized}
+docker run --rm -i -v=${VOLUME}:/tmp/ato-teamcity busybox find /tmp/ato-teamcity/data -maxdepth 1 -exec mv {} /tmp/ato-teamcity \;
+docker run --rm -i -v=${VOLUME}:/tmp/ato-teamcity busybox rm -rf /tmp/ato-teamcity/{data,conf,.initialized}
 ## Change the mount point
-sed -i -e 's#ato-teamcity_data:/allthingsops/TeamCity Server#ato-teamcity_data:/allthingsops/TeamCity Server/data#g' docker-compose.yml
-## Pull the latest allthingsops/TeamCity Server image
-docker pull allthingsops/ATO TeamCity Server:latest
+sed -i -e 's#ato-teamcity_data:/allthingsops/ato-teamcity#ato-teamcity_data:/allthingsops/ato-teamcity/data#g' docker-compose.yml
+## Pull the latest allthingsops/ato-teamcity image
+docker pull allthingsops/ato-teamcity:latest
 docker-compose up -d
 ```
 
 ### 4.0.1-r1
 
-* The TeamCity Server container has been migrated to a non-root container approach. Previously the container run as `root` user and the TeamCity Server daemon was started as `TeamCity Server` user. From now own, both the container and the TeamCity Server daemon run as user `1001`.
-  As a consequence, the configuration files are writable by the user running the TeamCity Server process.
+* The ATO TeamCity Server container has been migrated to a non-root container approach. Previously the container run as `root` user and the ATO TeamCity Server daemon was started as `ATO TeamCity Server` user. From now own, both the container and the ATO TeamCity Server daemon run as user `1001`.
+  As a consequence, the configuration files are writable by the user running the ATO TeamCity Server process.
 
 ### 3.2.0-r0
 
-* All volumes have been merged at `/allthingsops/TeamCity Server`. Now you only need to mount a single volume at `/allthingsops/TeamCity Server` for persistence.
+* All volumes have been merged at `/allthingsops/ato-teamcity`. Now you only need to mount a single volume at `/allthingsops/ato-teamcity` for persistence.
 * The logs are always sent to the `stdout` and are no longer collected in the volume.
 
 ## Contributing
@@ -657,7 +657,7 @@ If you encountered a problem running this container, you can file an [issue](htt
 
 ## License
 
-Copyright &copy; 2023 allthingsops
+Copyright &copy; 2023 allThingsOps
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
