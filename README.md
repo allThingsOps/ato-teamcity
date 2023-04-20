@@ -2,10 +2,10 @@
 
 ## What is ATO TeamCity Server&reg;?
 
-> ATO TeamCity Server&reg; is an open source, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.
+> ATO TeamCity Server&reg; provides Continuous Integration and Continuous Delivery Pipelines for Kubernetes vi Jetbrains TeamCity
 
 [Overview of ATO TeamCity Server&reg;](https://allThingsOps.io)
-Disclaimer: ATO TeamCity Server is a registered trademark of ATO TeamCity Server Ltd. Any rights therein are reserved to ATO TeamCity Server Ltd. Any use by allThingsOps is for referential purposes only and does not indicate any sponsorship, endorsement, or affiliation between ATO TeamCity Server Ltd.
+Disclaimer: ATO TeamCity Server is a registered trademark of allThingsOps. Any rights therein are reserved to allThingsOps. Any use by Jetbrains TeamCity Ltd. is for referential purposes only and does not indicate any sponsorship, endorsement, or affiliation between allThingsOps.
 
 ## TL;DR
 
