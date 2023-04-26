@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: jetbrains/teamcity-server
+  repository: allthingsops/ato-teamcity
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "2022.10.3-linux"
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
